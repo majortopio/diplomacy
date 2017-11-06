@@ -86,6 +86,10 @@ class entity_controller
 
       $this->template->assign_vars(array(
         'U_HEADER'  => $entity['entity_name'],
+        'U_DESC'    => $entity['entity_desc'],
+        'U_GDP'     => number_format($entity['gross_domestic'],0),
+        'U_GDP_SHORT'     => $this->number_shorten($entity['gross_domestic']),
+        'U_POPULATION'    => $entity['population']
       ));
 
       return $this->helper->render('single_entity_view.html');
@@ -94,6 +98,10 @@ class entity_controller
   public function number_shorten($number)
   {
       $numlength = strlen((string)$number);
+      if ($numlength < 6)
+      {
+          return number_format($number,0);
+      }
       if ($numlength > 6 && $numlength < 10)
       {
           if($numlength == 7) {
