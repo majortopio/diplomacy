@@ -1,0 +1,73 @@
+<!-- INCLUDE overall_header.html -->
+
+<!-- IF S_EDIT_ENTITY -->
+
+<h1>{L_ACP_DIPLOMACY_ENTITY_EDIT_TITLE} &mdash; {ENTITY_NAME}</h1>
+
+<form id="entity" method="post" action="{U_ACTION}">
+  <fieldset>
+    <legend>General Information</legend>
+    <dl>
+      <dt><label for="entity_name">{L_ENTITY} Title</label></dt>
+      <dd><input class="text medium" type="text" id="entity_name" name="entity_name" value="{ENTITY_NAME}" maxlength="255"></dd>
+    </dl>
+    <dl>
+      <dt><label for="entity_desc">{L_ENTITY} Description</label></dt>
+      <dd><textarea class="textarea" rows="5" id="entity_desc" name="entity_desc">{ENTITY_DESC}</textarea></dd>
+    </dl>
+    <dl>
+      <dt><label for="gross_domestic">{L_ENTITY} GDP</label></dt>
+      <dd><input class="text medium" type="text" id="gross_domestic" name="gross_domestic" value="{GROSS_DOMESTIC}"></dd>
+    </dl>
+  </fieldset>
+
+  <fieldset class="submit-buttons">
+    <input class="button1" type="submit" name="submit" value="{L_SUBMIT}">&nbsp;
+    {S_FORM_TOKEN}
+  </fieldset>
+</form>
+
+<!-- ELSEIF S_VIEW_ENTITIES -->
+
+<h1>{L_ACP_DIPLOMACY_ENTITY_VIEW_TITLE}</h1>
+<br>
+<!-- IF .entities -->
+<table class="table1 forums">
+  <colgroup><col class="row1" /><col class="row1" /><col class="row2" /></colgroup>
+  <thead>
+    <tr>
+      <th colspan="2">{L_ACP_CATEGORIES}</th>
+      <th>{L_ACTION}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- BEGIN entities -->
+    <tr>
+      <td class="folder">
+        <img src="images/icon_subfolder.gif" alt="{L_ACP_KNOWLEDGEBASE_CATEGORY}" />
+      <td class="forum-desc">
+        <strong><a href="{entities.U_ACTION_EDIT}">{entities.ENTITY_NAME}</a></strong>
+        <!-- IF entities.ENTITY_DESCRIPTION --><br /><span>{entities.ENTITY_DESCRIPTION}</span><!-- ENDIF -->
+      </td>
+      <td class="actions">
+        <a href="{entities.U_ACTION_DELETE}">Delete</a>
+      </td>
+    </tr>
+  <!-- END entities -->
+  </tbody>
+</table>
+<!-- ENDIF -->
+
+<form id="entities" method="post" action="{U_ACTION}">
+  <fieldset class="quick">
+    <label>Quick Add</label>
+    <input type="text" name="entity_name" value="" maxlength="255" placeholder="{L_ENTITY}">
+    <input class="button2" name="submit" type="submit" id="submit" name="submit" value="Submit">
+    <input type="hidden" name="action" value="add">
+    {S_FORM_TOKEN}
+  </fieldset>
+</form>
+
+<!-- ENDIF -->
+
+<!-- INCLUDE overall_footer.html -->

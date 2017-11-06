@@ -1,0 +1,35 @@
+imports:
+    - { resource: parameters.yml }
+
+services:
+    majortopio.diplomacy.entity.admin.controller:
+        class: majortopio\diplomacy\controller\entity_admin_controller
+        arguments:
+            - '@cache.driver'
+            - '@config'
+            - '@service_container'
+            - '@controller.helper'
+            - '@dbal.conn'
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '%core.root_path%'
+            - '%majortopio.diplomacy.tables.dip_entities%'
+    majortopio.diplomacy.entity.controller:
+        class: majortopio\diplomacy\controller\entity_controller
+        arguments:
+            - '@config'
+            - '@controller.helper'
+            - '@template'
+            - '@user'
+            - '@dbal.conn'
+            - '%majortopio.diplomacy.tables.dip_entities%'
+    majortopio.diplomacy.listener:
+        class: majortopio\diplomacy\event\listener
+        arguments:
+            - '@controller.helper'
+            - '@template'
+        tags:
+            - { name: event.listener }

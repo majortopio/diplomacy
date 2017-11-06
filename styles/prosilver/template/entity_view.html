@@ -1,0 +1,45 @@
+<!-- INCLUDE overall_header.html -->
+
+<h2>List of {L_ENTITY_PL}</h2>
+<br>
+
+<div class="action-bar bar-top">
+  <div class="member-search panel">
+    Find specific {L_ENTITY_LC} • <strong>A * B * C</strong>
+  </div>
+
+  <div class="pagination">
+    Page <strong>1</strong> of <strong>1</strong>
+  </div>
+</div>
+
+
+<div class="forumbg forumbg-table">
+  <div class="inner">
+    <table class="table1 memberlist show-header responsive" id="entitylist">
+      <thead>
+        <tr>
+          <th class="name">
+            Name
+          </th>
+          <th class="posts">
+            GDP
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+<!-- BEGIN entities -->
+        <tr class="{entities.BG_COLOR}">
+          <td>
+            <a href="{entities.U_VIEW_LINK}">{entities.ENTITY_NAME}</a>
+          </td>
+          <td>
+            {entities.GROSS_DOMESTIC}
+          </td>
+        </tr>
+<!-- END entities -->
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- INCLUDE overall_footer.html -->

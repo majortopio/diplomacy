@@ -1,0 +1,9 @@
+majortopio_diplomacy_entity_controller:
+    path: /dip/entities
+    defaults: { _controller: majortopio.diplomacy.entity.controller:display }
+
+majortopio_diplomacy_entity_controller_view:
+    path: /dip/entity/{entity_id}
+    defaults: { _controller: majortopio.diplomacy.entity.controller:show_entity }
+    requirements:
+        entity_id: \d+

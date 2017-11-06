@@ -1,0 +1,2 @@
+parameters:
+    majortopio.diplomacy.tables.dip_entities: '%core.table_prefix%dip_entities'

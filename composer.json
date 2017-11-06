@@ -1,0 +1,28 @@
+{
+    "name": "majortopio/diplomacy",
+    "type": "phpbb-extension",
+    "description": "Diplomacy Engine for phpBB",
+    "homepage": "https://majortopio.com",
+    "version": "0.0.1",
+    "time": "2017-09-10",
+    "keywords": ["phpbb", "extension", "nationsim", "engine"],
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Nikolai Larsen",
+            "email": "majortopio@gmail.com",
+            "homepage": "https://majortopio.com/",
+            "role": "Developer-God"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "composer/installers": "~1.0"
+    },
+    "extra": {
+        "display-name": "Diplomacy Engine",
+        "soft-require": {
+            "phpbb/phpbb": "~3.2"
+        }
+    }
+}
