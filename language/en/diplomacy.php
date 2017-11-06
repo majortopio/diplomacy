@@ -32,6 +32,7 @@ $lang = array_merge($lang, array(
 	'GDP'             => 'Gross Domestic Product',
 	'NAME'            => 'Name',
 	'POPULATION'      => 'Population',
+	'REGION'          => 'Region',
 	'CURRENCY_PL'     => 'cubits',
 	'ACP_DIPLOMACY'         => 'Diplomacy',
 	'ACP_DIPLOMACY_SETTINGS_TITLE'	=> 'Settings',
