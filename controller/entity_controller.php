@@ -13,25 +13,25 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 //Entity controller
 class entity_controller
 {
-  /** @var \phpbb\auth\auth */
-  protected $auth;
-
-  /** @var \phpbb\config\config */
+  /* @var \phpbb\config\config */
   protected $config;
 
-  /** @var \phpbb\controller\helper */
+  /* @var \phpbb\controller\helper */
   protected $helper;
 
-  /** @var \phpbb\template\template */
+  /* @var \phpbb\template\template */
   protected $template;
 
-  /** @var \phpbb\user */
+  /* @var \phpbb\user */
   protected $user;
 
-  /** @var \phpbb\db\driver\driver_interface */
+  /* @var \phpbb\db\driver\driver_interface */
   protected $db;
 
-  /** @var string dip_entities_table */
+  /* @var \majortopio\diplomacy\functions\dhelper */
+  protected $dhelper;
+
+  /* @var string dip_entities_table */
   protected $dip_entities_table;
 
   /** Constructor
@@ -39,15 +39,18 @@ class entity_controller
     * @param \phpbb\controller\helper $helper
     * @param \phpbb\template\template $template
     * @param \phpbb\user              $user
+    * @param \phpbb\db\driver\driver_interface $db
+    * @param \majortopio\diplomacy\functions\dhelper $dhelper
     * @param string                   $dip_entities_table
     */
-  public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper, \phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, $dip_entities_table)
+  public function __construct(\phpbb\config\config $config, \phpbb\controller\helper $helper, \phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \majortopio\diplomacy\functions\dhelper $dhelper, $dip_entities_table)
   {
     $this->config   = $config;
     $this->helper   = $helper;
     $this->template = $template;
     $this->user     = $user;
     $this->db       = $db;
+    $this->dhelper = $dhelper;
     $this->dip_entities_table = $dip_entities_table;
   }
 
@@ -66,7 +69,7 @@ class entity_controller
       $entities = array(
         'ENTITY_NAME'         => $row['entity_name'],
         'ENTITY_DESCRIPTION'  => $row['entity_desc'],
-        'GROSS_DOMESTIC'      => $this->number_shorten($row['gross_domestic']),
+        'GROSS_DOMESTIC'      => $this->dhelper->number_shorten($row['gross_domestic']),
         'BG_COLOR'            => 'bg' . $bg_counter,
         'U_VIEW_LINK'         => $this->helper->route('majortopio_diplomacy_entity_controller_view', array("entity_id" => $row['entity_id'])),
       );
@@ -88,61 +91,11 @@ class entity_controller
         'U_HEADER'  => $entity['entity_name'],
         'U_DESC'    => $entity['entity_desc'],
         'U_GDP'     => number_format($entity['gross_domestic'],0),
-        'U_GDP_SHORT'     => $this->number_shorten($entity['gross_domestic']),
+        'U_GDP_SHORT'     => $this->dhelper->number_shorten($entity['grossdomestic']),
         'U_POPULATION'    => $entity['population']
       ));
 
       return $this->helper->render('single_entity_view.html');
-  }
-
-  public function number_shorten($number)
-  {
-      $numlength = strlen((string)$number);
-      if ($numlength < 6)
-      {
-          return number_format($number,0);
-      }
-      if ($numlength > 6 && $numlength < 10)
-      {
-          if($numlength == 7) {
-              return substr((string)$number, 0, 1) . '.' . substr((string)$number, 1, 1) . ' million';
-          }
-          elseif($numlength == 8) {
-              return substr((string)$number, 0, 2) . '.' . substr((string)$number, 2, 1) . ' million';
-          }
-          elseif($numlength == 9)
-          {
-              return substr((string)$number, 0, 3) . '.' . substr((string)$number, 3, 2) . ' million';
-          }
-      }
-      elseif ($numlength > 9 && $numlength < 13)
-      {
-          if($numlength == 10) {
-              return substr((string)$number, 0, 1) . '.' . substr((string)$number, 1, 1) . ' billion';
-          }
-          elseif($numlength == 11) {
-              return substr((string)$number, 0, 2) . '.' . substr((string)$number, 2, 1) . ' billion';
-          }
-          elseif($numlength == 12)
-          {
-              return substr((string)$number, 0, 3) . '.' . substr((string)$number, 3, 2) . ' billion';
-          }
-      }
-      elseif ($numlength > 12 && $numlength < 16)
-      {
-          if($numlength == 13) {
-              return substr((string)$number, 0, 1) . '.' . substr((string)$number, 1, 1) . ' trillion';
-          }
-          elseif($numlength == 14) {
-              return substr((string)$number, 0, 2) . '.' . substr((string)$number, 2, 1) . ' trillion';
-          }
-          elseif($numlength == 15)
-          {
-              return substr((string)$number, 0, 3) . '.' . substr((string)$number, 3, 2) . ' trillion';
-          }
-      }
-
-      return $number;
   }
 
 }

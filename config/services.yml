@@ -25,6 +25,7 @@ services:
             - '@template'
             - '@user'
             - '@dbal.conn'
+            - '@majortopio.diplomacy.functions.dhelper'
             - '%majortopio.diplomacy.tables.dip_entities%'
     majortopio.diplomacy.listener:
         class: majortopio\diplomacy\event\listener
@@ -33,3 +34,5 @@ services:
             - '@template'
         tags:
             - { name: event.listener }
+    majortopio.diplomacy.functions.dhelper:
+        class: majortopio\diplomacy\functions\dhelper
