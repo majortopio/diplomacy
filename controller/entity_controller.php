@@ -91,7 +91,7 @@ class entity_controller
         'U_HEADER'  => $entity['entity_name'],
         'U_DESC'    => $entity['entity_desc'],
         'U_GDP'     => number_format($entity['gross_domestic'],0),
-        'U_GDP_SHORT'     => $this->dhelper->number_shorten($entity['grossdomestic']),
+        'U_GDP_SHORT'     => $this->dhelper->number_shorten($entity['gross_domestic']),
         'U_POPULATION'    => $entity['population']
       ));
 

@@ -47,6 +47,26 @@ class version_0_0_1 extends \phpbb\db\migration\migration
           'PRIMARY_KEY' => 'organization_id',
         ),
 
+        $this->table_prefix . 'dip_modifiers' => array(
+          'COLUMNS' => array(
+              'modifier_id' => array('UINT', NULL, 'auto_increment'),
+              'modifier_name' => array('VCHAR_UNI:255', ''),
+              'modifier_desc' => array('MTEXT_UNI', ''),
+              'modifier_stat' => array('VCHAR_UNI:255', ''),
+              'modifier_effect' => array('BINT', 0),
+          ),
+          'PRIMARY_KEY' => 'modifier_id',
+        ),
+
+        //Aspect join table
+        $this->table_prefix . 'dip_modifiers_join' => array(
+            'COLUMNS' => array(
+                'aspect_id' => array('UINT', 0),
+                'entity_id' => array('UINT', 0),
+                'organization_id' => array('UINT', 0),
+            ),
+        ),
+
         //Entity and organization join table
         $this->table_prefix . 'dip_entity_organization' => array(
           'COLUMNS' => array(
