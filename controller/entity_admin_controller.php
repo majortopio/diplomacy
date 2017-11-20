@@ -70,16 +70,16 @@ class entity_admin_controller
 	public function __construct(\phpbb\cache\driver\driver_interface $cache, \phpbb\config\config $config, ContainerInterface $container, \phpbb\controller\helper $helper, \phpbb\db\driver\driver_interface $db, \phpbb\language\language $lang, \phpbb\log\log $log, \phpbb\request\request $request, \phpbb\template\template $template, \phpbb\user $user, $root_path, $dip_entities_table)
 	{
     $this->cache = $cache;
-		$this->config = $config;
-		$this->container = $container;
-		$this->helper = $helper;
-		$this->db = $db;
-		$this->lang = $lang;
-		$this->log = $log;
-		$this->request = $request;
-		$this->template = $template;
-		$this->user = $user;
-		$this->root_path = $root_path;
+	$this->config = $config;
+	$this->container = $container;
+	$this->helper = $helper;
+	$this->db = $db;
+	$this->lang = $lang;
+	$this->log = $log;
+	$this->request = $request;
+	$this->template = $template;
+	$this->user = $user;
+	$this->root_path = $root_path;
     $this->dip_entities_table = $dip_entities_table;
   }
 

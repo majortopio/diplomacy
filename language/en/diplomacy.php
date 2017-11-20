@@ -24,12 +24,14 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-  'ENTITY' => 'Entity',
-  'ENTITY_PL' => 'Entities',
+    'ENTITY' => 'Entity',
+    'ENTITY_PL' => 'Entities',
 	'ENTITY_LC'	=>	'entity',
 	'ENTITY_PL_LC'	=> 'entities',
-  'ENTITY_PAGE_TITLE' => 'List of Entities',
+    'ENTITY_PAGE_TITLE' => 'List of Entities',
+	'GDP_SHORT'       => 'GDP',
 	'GDP'             => 'Gross Domestic Product',
+	'ENTITY_DESC'     => 'Description',
 	'NAME'            => 'Name',
 	'POPULATION'      => 'Population',
 	'REGION'          => 'Region',
