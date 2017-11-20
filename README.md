@@ -1,1 +1,1 @@
-# Diplomacy Engine extension for phpBB3
+# Diplomacy Engine -- A nationsim extension for phpBB3
